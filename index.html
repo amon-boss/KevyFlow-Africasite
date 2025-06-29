@@ -7,209 +7,234 @@
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
   <style>
     * {
-      margin: 0; padding: 0;
       box-sizing: border-box;
+      margin: 0;
+      padding: 0;
       font-family: 'Poppins', sans-serif;
     }
 
     body {
-      background: linear-gradient(135deg, #4f46e5, #6d28d9);
-      color: white;
       min-height: 100vh;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
       display: flex;
       flex-direction: column;
-      align-items: center;
-      padding: 40px 20px;
-      transition: background 0.3s, color 0.3s;
     }
 
     header {
+      padding: 40px 20px;
       text-align: center;
-      margin-bottom: 40px;
+      animation: fadeIn 1s ease-in;
     }
 
-    h1 {
+    header h1 {
       font-size: 2.5em;
       margin-bottom: 10px;
     }
 
-    p {
-      font-size: 1.1em;
-      max-width: 600px;
-      margin: 0 auto;
-      line-height: 1.6;
+    header p {
+      font-size: 1.2em;
+      color: #ccc;
     }
 
-    .cta-btn {
-      margin: 30px 0;
-      background-color: white;
-      color: #4f46e5;
-      border: none;
+    .buttons {
+      margin: 40px auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .buttons a {
+      background: #ffffff10;
       padding: 15px 30px;
-      border-radius: 50px;
-      font-weight: bold;
-      font-size: 1em;
-      cursor: pointer;
-      transition: transform 0.2s;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid white;
+      border-radius: 30px;
+      transition: 0.3s ease;
     }
 
-    .cta-btn:hover {
-      transform: scale(1.05);
+    .buttons a:hover {
+      background: white;
+      color: #2c5364;
+    }
+
+    .about {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+      line-height: 1.6;
+      color: #eee;
     }
 
     footer {
       margin-top: auto;
+      background: #0d1b2a;
+      padding: 30px 10px;
       text-align: center;
-      padding: 30px 20px 0;
       font-size: 0.9em;
     }
 
-    .footer-links {
-      margin-top: 10px;
+    footer a {
+      color: #ccc;
+      margin: 0 10px;
+      text-decoration: none;
     }
 
-    .footer-links a {
-      color: white;
-      margin: 0 10px;
+    footer a:hover {
       text-decoration: underline;
     }
 
-    .lang-select {
-      position: absolute;
-      top: 20px;
-      right: 20px;
-      padding: 5px 10px;
-      border-radius: 5px;
-      border: none;
-    }
-
-    .toggle-dark {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      background: #ffffff33;
-      border: none;
+    .contact-button {
+      display: inline-block;
+      margin-top: 20px;
+      background: #25D366;
       color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
       font-weight: bold;
-      padding: 8px 12px;
-      border-radius: 10px;
-      font-size: 0.9em;
-      backdrop-filter: blur(5px);
+      transition: background 0.3s;
+    }
+
+    .contact-button:hover {
+      background: #1da851;
+    }
+
+    #langSelect, #toggleTheme {
+      margin: 10px auto;
+      padding: 8px 16px;
+      font-size: 1em;
+      border-radius: 20px;
+      border: none;
       cursor: pointer;
+      background: white;
+      color: #2c5364;
+      font-weight: bold;
+      display: block;
     }
 
-    body.dark {
-      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
-      color: #eee;
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    body.dark .cta-btn {
-      background-color: #ffffff44;
-      color: #fff;
-    }
-
-    body.dark footer {
-      background-color: #111;
+    @media (min-width: 600px) {
+      .buttons {
+        flex-direction: row;
+        justify-content: center;
+      }
     }
   </style>
 </head>
 <body>
-  <select class="lang-select" onchange="setLanguage(this.value)">
-    <option value="fr">🇫🇷 Français</option>
-    <option value="en">🇬🇧 English</option>
-    <option value="es">🇪🇸 Español</option>
-    <option value="de">🇩🇪 Deutsch</option>
-  </select>
-
-  <button class="toggle-dark" onclick="toggleDarkMode()">🌓 Mode Nuit</button>
-
   <header>
-    <h1 data-i18n="title">KevyFlow Africa 🌍</h1>
-    <p data-i18n="desc">Une passerelle simple et rapide pour accéder à mon groupe privé Telegram via notre bot intelligent.</p>
+    <h1 id="title">KevyFlow Africa 🌍</h1>
+    <p id="subtitle">Rejoins notre univers ! Ton avenir digital commence ici.</p>
   </header>
 
-  <button class="cta-btn" onclick="window.location.href='https://t.me/kevyfa_bot'" data-i18n="open_bot">
-    Accéder au Bot Telegram 🤖
-  </button>
+  <select id="langSelect">
+    <option value="fr">Français</option>
+    <option value="en">English</option>
+    <option value="es">Español</option>
+    <option value="de">Deutsch</option>
+  </select>
 
-  <p data-i18n="note">Le bot vous guidera étape par étape pour finaliser votre paiement et rejoindre le groupe.</p>
+  <button id="toggleTheme">🌙 Mode nuit</button>
+
+  <div class="buttons">
+    <a id="botBtn" href="https://t.me/kevyfa_bot" target="_blank">🚀 Accéder au Bot Telegram</a>
+    <a id="contactBtn" href="https://wa.me/qr/DLQCUHPIVBYLE1" target="_blank" class="contact-button">📞 Me Contacter</a>
+  </div>
+
+  <section class="about">
+    <h2 id="aboutTitle">À propos de KevyFlow Africa</h2>
+    <p id="aboutText1">
+      KevyFlow Africa 🌍 est un groupe Telegram privé dédié aux opportunités numériques, à l'entraide et à l'évolution.  
+      Grâce à notre bot intelligent, tu seras guidé pas à pas pour t’inscrire, payer et rejoindre notre communauté exclusive.
+      Le processus est 100% automatisé pour te faire gagner du temps.
+    </p>
+    <p id="aboutText2" style="margin-top: 20px;">
+      Clique sur le bouton "Accéder au Bot Telegram" ci-dessus. Tu seras ensuite guidé de A à Z par notre assistant pour rejoindre le groupe.
+    </p>
+  </section>
 
   <footer>
-    <div class="footer-links">
-      <a href="https://wa.me/qr/DLQCUHPIVBYLE1" target="_blank" data-i18n="contact">📞 Me contacter</a>
-      |
-      <a href="#" data-i18n="terms">CGU</a>
-      |
-      <a href="#" data-i18n="policy">Politique d'utilisation</a>
-      |
-      <a href="https://instagram.com/kevy__k" target="_blank">📸 Instagram</a>
+    <div>
+      <a href="#">CGU</a>
+      <a href="#">Politique d'utilisation</a>
+      <a href="#">À propos</a>
     </div>
-    <p>&copy; 2025 KevyFlow Africa. Tous droits réservés.</p>
+    <p style="margin-top: 10px;">© 2025 KevyFlow Africa 🌍 - Tous droits réservés</p>
   </footer>
 
   <script>
     const translations = {
       fr: {
-        title: "KevyFlow Africa 🌍",
-        desc: "Une passerelle simple et rapide pour accéder à mon groupe privé Telegram via notre bot intelligent.",
-        open_bot: "Accéder au Bot Telegram 🤖",
-        note: "Le bot vous guidera étape par étape pour finaliser votre paiement et rejoindre le groupe.",
-        contact: "📞 Me contacter",
-        terms: "CGU",
-        policy: "Politique d'utilisation",
+        subtitle: "Rejoins notre univers ! Ton avenir digital commence ici.",
+        botBtn: "🚀 Accéder au Bot Telegram",
+        contactBtn: "📞 Me Contacter",
+        aboutTitle: "À propos de KevyFlow Africa",
+        aboutText1: "KevyFlow Africa 🌍 est un groupe Telegram privé dédié aux opportunités numériques, à l'entraide et à l'évolution. Grâce à notre bot intelligent, tu seras guidé pas à pas pour t’inscrire, payer et rejoindre notre communauté exclusive. Le processus est 100% automatisé pour te faire gagner du temps.",
+        aboutText2: "Clique sur le bouton \"Accéder au Bot Telegram\" ci-dessus. Tu seras ensuite guidé de A à Z par notre assistant pour rejoindre le groupe.",
+        toggleTheme: "🌙 Mode nuit"
       },
       en: {
-        title: "KevyFlow Africa 🌍",
-        desc: "A simple and fast way to access my private Telegram group via our smart bot.",
-        open_bot: "Open Telegram Bot 🤖",
-        note: "The bot will guide you step-by-step to complete payment and join the group.",
-        contact: "📞 Contact Me",
-        terms: "Terms of Use",
-        policy: "Usage Policy",
+        subtitle: "Join our world! Your digital future starts here.",
+        botBtn: "🚀 Access the Telegram Bot",
+        contactBtn: "📞 Contact Me",
+        aboutTitle: "About KevyFlow Africa",
+        aboutText1: "KevyFlow Africa 🌍 is a private Telegram group dedicated to digital opportunities, support, and growth. Our smart bot will guide you step by step to register, pay and join our exclusive community. The process is 100% automated to save you time.",
+        aboutText2: "Click the \"Access the Telegram Bot\" button above. Our assistant will guide you step by step to join the group.",
+        toggleTheme: "🌙 Night Mode"
       },
       es: {
-        title: "KevyFlow Africa 🌍",
-        desc: "Una vía rápida y sencilla para acceder a mi grupo privado de Telegram a través de nuestro bot inteligente.",
-        open_bot: "Abrir Bot de Telegram 🤖",
-        note: "El bot te guiará paso a paso para completar el pago y unirte al grupo.",
-        contact: "📞 Contáctame",
-        terms: "Términos de uso",
-        policy: "Política de uso",
+        subtitle: "¡Únete a nuestro universo! Tu futuro digital comienza aquí.",
+        botBtn: "🚀 Acceder al Bot de Telegram",
+        contactBtn: "📞 Contáctame",
+        aboutTitle: "Acerca de KevyFlow Africa",
+        aboutText1: "KevyFlow Africa 🌍 es un grupo privado de Telegram dedicado a las oportunidades digitales, la ayuda mutua y el crecimiento. Nuestro bot inteligente te guiará paso a paso para registrarte, pagar y unirte a nuestra comunidad exclusiva. El proceso es 100% automatizado para ahorrarte tiempo.",
+        aboutText2: "Haz clic en el botón \"Acceder al Bot de Telegram\" arriba. Nuestro asistente te guiará paso a paso para unirte al grupo.",
+        toggleTheme: "🌙 Modo noche"
       },
       de: {
-        title: "KevyFlow Africa 🌍",
-        desc: "Ein einfacher und schneller Weg, um über unseren intelligenten Bot Zugang zu meiner privaten Telegram-Gruppe zu erhalten.",
-        open_bot: "Telegram-Bot öffnen 🤖",
-        note: "Der Bot führt dich Schritt für Schritt durch die Zahlung und den Beitritt zur Gruppe.",
-        contact: "📞 Kontaktieren Sie mich",
-        terms: "Nutzungsbedingungen",
-        policy: "Nutzungsrichtlinie",
-      },
-    };
-
-    function setLanguage(lang) {
-      document.querySelectorAll("[data-i18n]").forEach((el) => {
-        const key = el.getAttribute("data-i18n");
-        el.textContent = translations[lang][key] || el.textContent;
-      });
-      localStorage.setItem("lang", lang);
-    }
-
-    function toggleDarkMode() {
-      document.body.classList.toggle("dark");
-      localStorage.setItem("darkMode", document.body.classList.contains("dark") ? "on" : "off");
-    }
-
-    window.onload = () => {
-      const lang = localStorage.getItem("lang") || "fr";
-      document.querySelector(".lang-select").value = lang;
-      setLanguage(lang);
-
-      const darkPref = localStorage.getItem("darkMode");
-      if (darkPref === "on") {
-        document.body.classList.add("dark");
+        subtitle: "Tritt unserer Welt bei! Deine digitale Zukunft beginnt hier.",
+        botBtn: "🚀 Zum Telegram-Bot",
+        contactBtn: "📞 Kontaktiere mich",
+        aboutTitle: "Über KevyFlow Africa",
+        aboutText1: "KevyFlow Africa 🌍 ist eine private Telegram-Gruppe für digitale Chancen, gegenseitige Hilfe und Wachstum. Unser intelligenter Bot führt dich Schritt für Schritt durch die Anmeldung, Bezahlung und den Beitritt zur exklusiven Community. Der Prozess ist 100 % automatisiert, um dir Zeit zu sparen.",
+        aboutText2: "Klicke auf die Schaltfläche „Zum Telegram-Bot“ oben. Unser Assistent führt dich Schritt für Schritt durch den Beitritt zur Gruppe.",
+        toggleTheme: "🌙 Nachtmodus"
       }
     };
+
+    const langSelect = document.getElementById('langSelect');
+    const subtitle = document.getElementById('subtitle');
+    const botBtn = document.getElementById('botBtn');
+    const contactBtn = document.getElementById('contactBtn');
+    const aboutTitle = document.getElementById('aboutTitle');
+    const aboutText1 = document.getElementById('aboutText1');
+    const aboutText2 = document.getElementById('aboutText2');
+    const toggleTheme = document.getElementById('toggleTheme');
+
+    langSelect.addEventListener('change', () => {
+      const lang = langSelect.value;
+      subtitle.textContent = translations[lang].subtitle;
+      botBtn.textContent = translations[lang].botBtn;
+      contactBtn.textContent = translations[lang].contactBtn;
+      aboutTitle.textContent = translations[lang].aboutTitle;
+      aboutText1.textContent = translations[lang].aboutText1;
+      aboutText2.textContent = translations[lang].aboutText2;
+      toggleTheme.textContent = translations[lang].toggleTheme;
+    });
+
+    toggleTheme.addEventListener('click', () => {
+      document.body.classList.toggle('dark');
+      toggleTheme.classList.toggle('active');
+    });
   </script>
 </body>
 </html>
