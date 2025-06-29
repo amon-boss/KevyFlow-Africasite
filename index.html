@@ -2,27 +2,151 @@
 <html lang="fr">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>KevyFlow Africa 🌍</title>
-  <link rel="stylesheet" href="styles/main.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      min-height: 100vh;
+      background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+      color: white;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      padding: 40px 20px;
+      text-align: center;
+      animation: fadeIn 1s ease-in;
+    }
+
+    header h1 {
+      font-size: 2.5em;
+      margin-bottom: 10px;
+    }
+
+    header p {
+      font-size: 1.2em;
+      color: #ccc;
+    }
+
+    .buttons {
+      margin: 40px auto;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .buttons a {
+      background: #ffffff10;
+      padding: 15px 30px;
+      color: white;
+      text-decoration: none;
+      font-weight: 600;
+      border: 2px solid white;
+      border-radius: 30px;
+      transition: 0.3s ease;
+    }
+
+    .buttons a:hover {
+      background: white;
+      color: #2c5364;
+    }
+
+    .about {
+      max-width: 800px;
+      margin: 40px auto;
+      padding: 0 20px;
+      text-align: center;
+      line-height: 1.6;
+      color: #eee;
+    }
+
+    footer {
+      margin-top: auto;
+      background: #0d1b2a;
+      padding: 30px 10px;
+      text-align: center;
+      font-size: 0.9em;
+    }
+
+    footer a {
+      color: #ccc;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
+
+    .contact-button {
+      display: inline-block;
+      margin-top: 20px;
+      background: #25D366;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      transition: background 0.3s;
+    }
+
+    .contact-button:hover {
+      background: #1da851;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @media (min-width: 600px) {
+      .buttons {
+        flex-direction: row;
+        justify-content: center;
+      }
+    }
+  </style>
 </head>
 <body>
-  <div class="hero">
+  <header>
     <h1>KevyFlow Africa 🌍</h1>
-    <p>Un accès simplifié à notre communauté privée via Telegram</p>
-    <button onclick="goToBot()">Rejoindre le Bot</button>
-    <p class="note">Le bot vous guidera étape par étape pour le paiement et l’intégration au groupe</p>
+    <p>Rejoins notre univers ! Ton avenir digital commence ici.</p>
+  </header>
+
+  <div class="buttons">
+    <a href="https://t.me/kevyfa_bot" target="_blank">🚀 Accéder au Bot Telegram</a>
+    <a href="https://wa.me/qr/DLQCUHPIVBYLE1" target="_blank" class="contact-button">📞 Me Contacter</a>
   </div>
 
-  <footer>
-    <a href="cgu.html">CGU</a>
-    <a href="politique.html">Politique d’utilisation</a>
-    <a href="a-propos.html">À propos</a>
-    <a href="contact.html">Contact</a>
-    <a href="https://wa.me/qr/DLQCUHPIVBYLE1" target="_blank">Me contacter sur WhatsApp</a>
-    <p class="copyright">© 2025 KevyFlow Africa. Tous droits réservés.</p>
-  </footer>
+  <section class="about">
+    <h2>À propos de KevyFlow Africa</h2>
+    <p>
+      KevyFlow Africa 🌍 est un groupe Telegram privé dédié aux opportunités numériques, à l'entraide et à l'évolution.  
+      Grâce à notre bot intelligent, tu seras guidé pas à pas pour t’inscrire, payer et rejoindre notre communauté exclusive.
+      Le processus est 100% automatisé pour te faire gagner du temps.
+    </p>
+    <p style="margin-top: 20px;">
+      Clique sur le bouton "Accéder au Bot Telegram" ci-dessus. Tu seras ensuite guidé de A à Z par notre assistant pour rejoindre le groupe.
+    </p>
+  </section>
 
-  <script src="scripts/botRedirect.js"></script>
+  <footer>
+    <div>
+      <a href="#">CGU</a>
+      <a href="#">Politique d'utilisation</a>
+      <a href="#">À propos</a>
+    </div>
+    <p style="margin-top: 10px;">© 2025 KevyFlow Africa 🌍 - Tous droits réservés</p>
+  </footer>
 </body>
 </html>
