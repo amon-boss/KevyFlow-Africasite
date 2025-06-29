@@ -19,6 +19,12 @@
       color: white;
       display: flex;
       flex-direction: column;
+      transition: background 0.4s, color 0.4s;
+    }
+
+    body.dark {
+      background: #121212;
+      color: #f1f1f1;
     }
 
     header {
@@ -164,11 +170,11 @@
 
   <footer>
     <div>
-      <a href="#">CGU</a>
-      <a href="#">Politique d'utilisation</a>
-      <a href="#">À propos</a>
+      <a id="cguLink" href="#">CGU</a>
+      <a id="privacyLink" href="#">Politique d'utilisation</a>
+      <a id="aboutLink" href="#">À propos</a>
     </div>
-    <p style="margin-top: 10px;">© 2025 KevyFlow Africa 🌍 - Tous droits réservés</p>
+    <p id="footerText" style="margin-top: 10px;">© 2025 KevyFlow Africa 🌍 - Tous droits réservés</p>
   </footer>
 
   <script>
@@ -180,7 +186,11 @@
         aboutTitle: "À propos de KevyFlow Africa",
         aboutText1: "KevyFlow Africa 🌍 est un groupe Telegram privé dédié aux opportunités numériques, à l'entraide et à l'évolution. Grâce à notre bot intelligent, tu seras guidé pas à pas pour t’inscrire, payer et rejoindre notre communauté exclusive. Le processus est 100% automatisé pour te faire gagner du temps.",
         aboutText2: "Clique sur le bouton \"Accéder au Bot Telegram\" ci-dessus. Tu seras ensuite guidé de A à Z par notre assistant pour rejoindre le groupe.",
-        toggleTheme: "🌙 Mode nuit"
+        toggleTheme: "🌙 Mode nuit",
+        cgu: "CGU",
+        privacy: "Politique d'utilisation",
+        about: "À propos",
+        copyright: "© 2025 KevyFlow Africa 🌍 - Tous droits réservés"
       },
       en: {
         subtitle: "Join our world! Your digital future starts here.",
@@ -189,7 +199,11 @@
         aboutTitle: "About KevyFlow Africa",
         aboutText1: "KevyFlow Africa 🌍 is a private Telegram group dedicated to digital opportunities, support, and growth. Our smart bot will guide you step by step to register, pay and join our exclusive community. The process is 100% automated to save you time.",
         aboutText2: "Click the \"Access the Telegram Bot\" button above. Our assistant will guide you step by step to join the group.",
-        toggleTheme: "🌙 Night Mode"
+        toggleTheme: "🌙 Night Mode",
+        cgu: "Terms",
+        privacy: "Privacy Policy",
+        about: "About",
+        copyright: "© 2025 KevyFlow Africa 🌍 - All rights reserved"
       },
       es: {
         subtitle: "¡Únete a nuestro universo! Tu futuro digital comienza aquí.",
@@ -198,7 +212,11 @@
         aboutTitle: "Acerca de KevyFlow Africa",
         aboutText1: "KevyFlow Africa 🌍 es un grupo privado de Telegram dedicado a las oportunidades digitales, la ayuda mutua y el crecimiento. Nuestro bot inteligente te guiará paso a paso para registrarte, pagar y unirte a nuestra comunidad exclusiva. El proceso es 100% automatizado para ahorrarte tiempo.",
         aboutText2: "Haz clic en el botón \"Acceder al Bot de Telegram\" arriba. Nuestro asistente te guiará paso a paso para unirte al grupo.",
-        toggleTheme: "🌙 Modo noche"
+        toggleTheme: "🌙 Modo noche",
+        cgu: "Términos",
+        privacy: "Política de uso",
+        about: "Acerca de",
+        copyright: "© 2025 KevyFlow Africa 🌍 - Todos los derechos reservados"
       },
       de: {
         subtitle: "Tritt unserer Welt bei! Deine digitale Zukunft beginnt hier.",
@@ -207,7 +225,11 @@
         aboutTitle: "Über KevyFlow Africa",
         aboutText1: "KevyFlow Africa 🌍 ist eine private Telegram-Gruppe für digitale Chancen, gegenseitige Hilfe und Wachstum. Unser intelligenter Bot führt dich Schritt für Schritt durch die Anmeldung, Bezahlung und den Beitritt zur exklusiven Community. Der Prozess ist 100 % automatisiert, um dir Zeit zu sparen.",
         aboutText2: "Klicke auf die Schaltfläche „Zum Telegram-Bot“ oben. Unser Assistent führt dich Schritt für Schritt durch den Beitritt zur Gruppe.",
-        toggleTheme: "🌙 Nachtmodus"
+        toggleTheme: "🌙 Nachtmodus",
+        cgu: "Nutzungsbedingungen",
+        privacy: "Datenschutz",
+        about: "Über uns",
+        copyright: "© 2025 KevyFlow Africa 🌍 - Alle Rechte vorbehalten"
       }
     };
 
@@ -219,21 +241,29 @@
     const aboutText1 = document.getElementById('aboutText1');
     const aboutText2 = document.getElementById('aboutText2');
     const toggleTheme = document.getElementById('toggleTheme');
+    const cguLink = document.getElementById('cguLink');
+    const privacyLink = document.getElementById('privacyLink');
+    const aboutLink = document.getElementById('aboutLink');
+    const footerText = document.getElementById('footerText');
 
     langSelect.addEventListener('change', () => {
       const lang = langSelect.value;
-      subtitle.textContent = translations[lang].subtitle;
-      botBtn.textContent = translations[lang].botBtn;
-      contactBtn.textContent = translations[lang].contactBtn;
-      aboutTitle.textContent = translations[lang].aboutTitle;
-      aboutText1.textContent = translations[lang].aboutText1;
-      aboutText2.textContent = translations[lang].aboutText2;
-      toggleTheme.textContent = translations[lang].toggleTheme;
+      const t = translations[lang];
+      subtitle.textContent = t.subtitle;
+      botBtn.textContent = t.botBtn;
+      contactBtn.textContent = t.contactBtn;
+      aboutTitle.textContent = t.aboutTitle;
+      aboutText1.textContent = t.aboutText1;
+      aboutText2.textContent = t.aboutText2;
+      toggleTheme.textContent = t.toggleTheme;
+      cguLink.textContent = t.cgu;
+      privacyLink.textContent = t.privacy;
+      aboutLink.textContent = t.about;
+      footerText.textContent = t.copyright;
     });
 
     toggleTheme.addEventListener('click', () => {
       document.body.classList.toggle('dark');
-      toggleTheme.classList.toggle('active');
     });
   </script>
 </body>
